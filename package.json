@@ -1,0 +1,15 @@
+{
+  "name": "16-cevibasel-legendenprogramm2025",
+  "version": "1.0.0",
+  "description": "A small locally-running web application simulating a security cam setup for a program by CEVI Region Basel.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "16-cevibasel-legendenprogramm2025"
+  },
+  "author": "y-neck",
+  "license": "MIT"
+}
