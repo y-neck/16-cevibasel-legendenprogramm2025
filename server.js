@@ -11,5 +11,11 @@ app.get('/', (req, res) => {  //set url
     res.render('index')
 })
 
+const adminRouter = require('./routes/admin');
+const camRouter = require('./routes/cam');
+
+app.use('/admin', adminRouter);
+app.use('/cam', camRouter);
+
 //start server
 app.listen(port, () => console.log(`Server is running on https://localhost:${port}`));
