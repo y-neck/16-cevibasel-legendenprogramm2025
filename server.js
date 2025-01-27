@@ -5,6 +5,7 @@ const port = 4051;  //use project PLZ number
 
 //bodyParser
 app.set('view engine', 'ejs');
+app.use(express.static('src')); // serve static files from the src directory
 
 //Routes
 app.get('/', (req, res) => {  //set url

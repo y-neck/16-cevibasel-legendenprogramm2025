@@ -4,11 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/output.css">
+    <title>📼 PicassoControl</title>
 </head>
 
-<body>
-
+<body class="bg-gray-900">
+    <header class="bg-gray-600 p-5 flex flex-col items-center h-fit w-full">
+        <div id="logo" class="self-start">
+            <p class="text-white">📼 PicassoControl</p>
+        </div>
+        <h1 class="text-white text-5xl text-center">Überwachungskameras</h1>
+        <h2 class="text-1xl text-white text-center">Klicke auf ein Kamerabild, um auf die Grossansicht zu wechseln.</h2>
+    </header>
+    <main id="cam-grid" class="h-full grid grid-cols-4 grid-rows-2 gap-2">
+        <div id="cam-1" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 1</span>
+        </div>
+        <div id="cam-2" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 2</span>
+        </div>
+        <div id="cam-3" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 3</span>
+        </div>
+        <div id="cam-4" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 4</span>
+        </div>
+        <div id="cam-5" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 5</span>
+        </div>
+        <div id="cam-6" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 6</span>
+        </div>
+        <div id="cam-7" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 7</span>
+        </div>
+        <div id="cam-8" class="cam-container">
+            <div class="cam-viewer" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+            <span class="cam-title">Cam 8</span>
+        </div>
+    </main>
 </body>
+
+<style>
+    .cam-container {
+        @apply border-2 border-gray-600 rounded-lg text-white;
+    }
+</style>
 
 </html>

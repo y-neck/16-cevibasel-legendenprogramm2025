@@ -1,2 +1,16 @@
 @import "tailwindcss";
 /* Tailwind CLI Build: npx tailwindcss -i ./src/styles.css -o ./src/output.css --watch */
+
+
+.cam-container {
+    @apply border-2 border-gray-600 rounded-lg text-white m-4 h-fit;
+}
+
+.cam-viewer {
+    @apply w-full h-full aspect-video;
+}
+
+.cam-viewer img,
+video {
+    @apply w-full h-full object-cover grayscale;
+}
