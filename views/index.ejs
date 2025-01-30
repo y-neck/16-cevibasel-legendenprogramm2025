@@ -17,11 +17,11 @@
         <div id="logo" class="self-start">
             <p class="text-white">📼 PicassoControl</p>
         </div>
-        <h1 class="text-white text-5xl text-center">Überwachungskameras</h1>
+        <h1 class="text-white sm:text-5xl text-2xl text-center">Überwachungskameras</h1>
         <h2 class="text-1xl text-white text-center">Klicke auf ein Kamerabild, um auf die Grossansicht zu wechseln.
         </h2>
     </header>
-    <main id="cam-grid" class="h-full grid grid-cols-4 grid-rows-2 gap-2">
+    <main id="cam-grid" class="h-full grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-2 grid-rows-4 gap-2">
         <div id="cam-1" class="cam-container" onclick="window.location.href='/cam/' + this.id">
             <div class="cam-viewer" alt="Kamerabild">
                 <img src="/images/default.png">

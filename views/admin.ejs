@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="📼 PicassoControl">
+    <meta name="author" content="(c) 2025 https://github.com/y-neck">
+    <link rel="stylesheet" href="/output.css">
+    <title>📼 PicassoControl – Admin</title>
+</head>
+
+<body class="h-screen">
+    <header class="bg-gray-600 p-5 flex flex-col items-center h-fit w-full">
+        <div id="logo" class="self-start">
+            <p class="text-white">📼 PicassoControl</p>
+        </div>
+    </header>
+    <main class="flex flex-col items-center justify-center mt-16">
+        <label for="password-input" class="text-center">Passwort eingeben</label>
+        <input type="password" id="password-input" name="password" placeholder="Passwort"
+            class="w-1/2 p-2 text-center border-2-solid border-gray-600 rounded-lg">
+        <button type="submit" class="bg-gray-600 hover:bg-gray-800 hover:transition-all text-white p-2 rounded-lg"
+            id="submit-btn" onclick="login()">Einloggen</button>
+    </main>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (sessionStorage.getItem('logged-in') === 'true') {
+            window.location.href = '/admin/backend'
+        }
+    })
+
+    document.getElementById('submit-btn').addEventListener('click', login);
+
+    function login() {
+        let password = document.getElementById('password-input').value
+        if (password === 'legendenprogramm') {
+            sessionStorage.setItem('logged-in', 'true')
+            window.location.href = '/admin/backend'
+        } else {
+            alert('Falsches Passwort')
+        }
+    }
+</script>
+
+</html>
