@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="📼 PicassoControl – <%= camId %>">
+    <meta name="author" content="(c) 2025 https://github.com/y-neck">
+    <link rel="stylesheet" href="/output.css">
+    <title>📼 PicassoControl – <%= camId %>
+    </title>
+</head>
+
+<body class="bg-gray-900">
+    <header class="bg-gray-600 p-5 flex flex-col items-center h-fit w-full">
+        <div id="logo" class="self-start">
+            <p class="text-white">📼 PicassoControl</p>
+        </div>
+        <h1 class="text-white text-5xl text-center">Überwachungskamera</h1>
+        <h2 class="text-3xl text-white text-center">
+            <%= camId %>
+        </h2>
+    </header>
+    <main class="flex flex-col">
+        <a href="/" class="text-white m-5 p-2 bg-gray-600 rounded-lg text-center text-lg w-fit">← Zurück zur
+            Übersicht</a>
+        <div class="cam-container">
+            <div class="cam-viewer w-1/2 max-h-[900px]" alt="Kamerabild">
+                <img src="/images/default.png">
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<style>
+    .cam-container {
+        @apply border-2 border-gray-600 rounded-lg text-white;
+    }
+
+    .cam-viewer,
+    .cam-viewer img,
+    video {
+        @apply aspect-video w-1/2 max-h-[900px] object-contain;
+    }
+</style>
+
+</html>

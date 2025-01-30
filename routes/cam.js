@@ -6,11 +6,9 @@ router.get('/', (req, res) => {
 })
 
 // Dynamic routes for cam views
-router
-    .route('/:camId')
-    .get((req, res) => {
-        req.params.camId
-        res.send(`Cam page ${req.params.camId}`)
-    })
+router.get('/:camId', (req, res) => {
+    const camId = req.params.camId;
+    res.render('cam', { camId })
+})
 
 module.exports = router;
