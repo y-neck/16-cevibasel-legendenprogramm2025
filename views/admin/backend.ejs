@@ -1,1 +1,83 @@
-backend
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="📼 PicassoControl">
+    <meta name="author" content="(c) 2025 https://github.com/y-neck">
+    <link rel="stylesheet" href="/output.css">
+
+    <script src="/src/scripts/mediaUpload.js"></script>
+
+    <title>📼 PicassoControl Backend</title>
+</head>
+<span class="sr-only">Hi, schön dass du hier bist! Diese Seite wurde mit viel ☕️ umgesetzt durch neckXproductions
+    (©2025). Weitere Projekte findest du auf https://neckXproductions.ch.</span>
+
+<body class="bg-gray-900 w-screen box-border">
+    <header class="bg-gray-600 p-5 flex flex-col items-center h-fit w-full">
+        <div id="logo" class="self-start">
+            <p class="text-white">📼 PicassoControl</p>
+        </div>
+        <h1 class="text-white sm:text-5xl text-2xl text-center">Backend</h1>
+        <h2 class="text-1xl text-white text-center">Durch Klicken auf die Kamera-Buttons können neue Medien eingefügt
+            werden.
+        </h2>
+    </header>
+    <form enctype="multipart/form-data" id="media-grid"
+        class="h-full grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-2 grid-rows-4 gap-2 m-5 text-white text-center">
+        <div class="cam-container">
+            <label for="cam-1">Cam 1</label>
+            <input type="file" name="cam-1" id="cam-1" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-2">Cam 2</label>
+            <input type="file" name="cam-2" id="cam-2" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-3">Cam 3</label>
+            <input type="file" name="cam-3" id="cam-3" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-4">Cam 4</label>
+            <input type="file" name="cam-4" id="cam-4" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-5">Cam 5</label>
+            <input type="file" name="cam-5" id="cam-5" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-6">Cam 6</label>
+            <input type="file" name="cam-6" id="cam-6" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-7">Cam 7</label>
+            <input type="file" name="cam-7" id="cam-7" accept="image/*, video/*">
+        </div>
+        <div class="cam-container">
+            <label for="cam-8">Cam 8</label>
+            <input type="file" name="cam-8" id="cam-8" accept="image/*, video/*">
+        </div>
+        <button class="self-center bg-gray-600 hover:bg-gray-800 text-white border-2-solid border-gray-600 rounded-lg"
+            onclick="updateMedia()">
+            Speichern
+        </button>
+    </form>
+</body>
+
+<style>
+    .cam-container {
+        @apply border-2 border-gray-600 rounded-lg text-white flex flex-col items-center justify-center gap-4 text-center box-border;
+    }
+
+    label {
+        @apply bg-gray-600 hover:bg-gray-900 text-white border-2-solid border-gray-600;
+    }
+
+    /* input {
+        @apply hidden;
+    } */
+</style>
+
+</html>
