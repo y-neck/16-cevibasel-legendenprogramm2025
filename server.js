@@ -14,7 +14,7 @@ app.get('/', (req, res) => {  //set url
 
 const adminRouter = require('./routes/admin');
 const camRouter = require('./routes/cam');
-const uploadRouter = require('./routes/upload-router');
+const uploadRouter = require('./middleware/upload-router');
 
 app.use('/admin', adminRouter);
 app.use('/cam', camRouter);
