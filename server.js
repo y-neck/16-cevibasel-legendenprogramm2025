@@ -14,9 +14,11 @@ app.get('/', (req, res) => {  //set url
 
 const adminRouter = require('./routes/admin');
 const camRouter = require('./routes/cam');
+const uploadRouter = require('./routes/upload-router');
 
 app.use('/admin', adminRouter);
 app.use('/cam', camRouter);
+app.use('/upload-router', uploadRouter); // Forwards to upload-router:l36
 
 //start server
 app.listen(port, () => console.log(`Server is running on https://localhost:${port}`));
