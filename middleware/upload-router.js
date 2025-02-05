@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const router = express.Router();
+// Define upload directory
 const uploadDir = path.join(__dirname, '../src/upload');
 
 // Ensure upload directory exists
@@ -30,7 +31,7 @@ const storage = multer.diskStorage({
     }
 });
 
-// Upload middleware
+// Define upload middleware to use the defined storage
 const upload = multer({ storage });
 
 router.post('/', upload.any(), (req, res) => {

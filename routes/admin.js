@@ -11,7 +11,7 @@ router.get('/backend', (req, res) => {
 })
 // POST module for admin backend file upload
 router.post('/backend', upload, (req, res) => {
-    // Handle the form submission here
+    // On submit, /backend is called
     // For example, you can use the req.files array to access the uploaded files
     if (!req.files || !req.files.length === 0) {
         // No files uploaded
