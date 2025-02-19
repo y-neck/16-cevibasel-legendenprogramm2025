@@ -544,9 +544,6 @@
   .box-border {
     box-sizing: border-box;
   }
-  .contents {
-    display: contents;
-  }
   .flex {
     display: flex;
   }

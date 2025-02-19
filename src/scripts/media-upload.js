@@ -75,6 +75,8 @@ async function updateMedia() {
         // If the media element already exists, update its src attribute
         if (media) {
             media.src = newSrc;
+            // DEBUG:
+            console.log('Existing media updated:', media);
         } else {
             // Otherwise create a new media element and append it to the viewer
             media = document.createElement(mediaElement);
@@ -84,6 +86,8 @@ async function updateMedia() {
                 media.controls = true;
             }
             viewer.appendChild(media);
+            // DEBUG:
+            console.log('New media added:', media);
         }
     }
 }
