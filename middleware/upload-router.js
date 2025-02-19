@@ -34,12 +34,33 @@ const storage = multer.diskStorage({
 // Define upload middleware to use the defined storage
 const upload = multer({ storage });
 
+// Function to handle file upload via ws
+function broadcastUpdate(wss, camId) {
+    if (!wss) return;
+
+    const message = JSON.stringify({ action: "update", camId });
+
+    wss.clients.forEach(client => {
+        if (client.readyState === client.OPEN) {
+            client.send(message);
+        }
+    });
+}
+
 router.post('/', upload.any(), (req, res) => {
     // Check if files were uploaded
     if (!req.files || !req.files.length === 0) {
         // No files uploaded
         res.status(400).send('No files uploaded');
     }
+    // Extract WebSocket instance from request
+    const wss = req.app.get("wss");
+
+    req.files.forEach(file => {
+        // Broadcast update to all clients
+        broadcastUpdate(wss, file.fieldname);
+    });
+
     res.status(200).send('Files uploaded successfully');
 });
 
