@@ -70,7 +70,7 @@ async function updateMedia() {
         const media = viewer.querySelector(mediaElement);
 
         // Construct the new src attribute for the media
-        const newSrc = `/upload/${camId}.${mediaType === 'video' ? (mediaType === 'video' ? 'mp4' : 'mov') : mediaType === 'image' ? 'jpg' : 'png'}`;
+        const newSrc = `/upload/${camId}.${mediaType === 'video' ? 'mp4' : 'jpg'}`;
 
         // If the media element already exists, update its src attribute
         if (media) {
