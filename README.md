@@ -1,4 +1,4 @@
-# 16-cevibasel-legendenprogramm2025
+# CEVI Region Basel – Legendenprogramm 2025
 Developped by [neckXproductions/Yannick Spriessler (©2025)](https://neckxproductions.ch) for the Legendenprogramm 2025 of CEVI Basel.
 
 ## Installation
