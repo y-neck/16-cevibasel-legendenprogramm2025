@@ -13,6 +13,11 @@ https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4306d4954674113
 The camera names can be globally changed in the `camNames.js` file:
 ```TODO: Add code```
 
+These KV pairs are then passed to the index view via the `camNames` object:
+https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/9819af032ef3eaf4b4f812fe767cbd2e2b488ca8/server.js#L18-L23
+
+https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/9819af032ef3eaf4b4f812fe767cbd2e2b488ca8/routes/cam.js#L14-L26
+
 ### Admin backend
 The media elements in the frontend can be changed by uploading new images in the admin backend. This is done via a form with a file input for each camera:
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4306d495467411382ea6426e2dc021f6821c0fd9/src/scripts/media-upload.js#L20-L105

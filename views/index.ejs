@@ -8,6 +8,7 @@
     <meta name="author" content="(c) 2025 https://github.com/y-neck">
     <link rel="stylesheet" href="/output.css">
     <title>📼 PicassoControl</title>
+
 </head>
 <span class="sr-only">Hi, schön dass du hier bist! Diese Seite wurde mit viel ☕️ umgesetzt durch neckXproductions
     (©2025). Weitere Projekte findest du auf https://neckXproductions.ch.</span>
@@ -26,7 +27,9 @@
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-1">
                 <img src="/src/upload/cam-1.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
-            <span class="cam-title">Cam 1</span>
+            <span class="cam-title">
+                <%= camNames['cam-1'] %>
+            </span>
         </div>
         <div id="cam-2" class="cam-container" onclick="window.location.href='/cam/' + this.id">
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-2">
@@ -38,7 +41,7 @@
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-3">
                 <img src="/src/upload/cam-3.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
-            <span class="cam-title">Cam 3</span>
+            <span class="cam-title" data-cam-id="cam-3">Cam 3</span>
         </div>
         <div id="cam-4" class="cam-container" onclick="window.location.href='/cam/' + this.id">
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-4">
@@ -50,7 +53,7 @@
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-5">
                 <img src="/src/upload/cam-5.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
-            <span class="cam-title">Cam 5</span>
+            <span class="cam-title" data-cam-id="cam-5">Cam 5</span>
         </div>
         <div id="cam-6" class="cam-container" onclick="window.location.href='/cam/' + this.id">
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-6">
@@ -62,7 +65,7 @@
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-7">
                 <img src="/src/upload/cam-7.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
-            <span class="cam-title">Cam 7</span>
+            <span class="cam-title" data-cam-id="cam-7">Cam 7</span>
         </div>
         <div id="cam-8" class="cam-container" onclick="window.location.href='/cam/' + this.id">
             <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-8">

@@ -15,8 +15,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('src')); // serve static files from the src directory
 
 // Routes
+// Get camNames from store
+const { camNames } = require('./src/store/camNames.js');
+
 app.get('/', (req, res) => {  // set url
-    res.render('index')
+    res.render('index', { camNames })
 })
 
 // Import routes
