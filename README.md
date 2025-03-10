@@ -11,7 +11,7 @@ Developped by [neckXproductions/Yannick Spriessler (©2025)](https://neckxproduc
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4306d495467411382ea6426e2dc021f6821c0fd9/routes/cam.js#L9-L26
 
 The camera names can be globally changed in the `camNames.js` file:
-```TODO: Add code```
+https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4180433ac475fa65b121dffa0806f394d669fb23/src/store/camNames.js#L5-L12
 
 These KV pairs are then passed to the index view via the `camNames` object:
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/9819af032ef3eaf4b4f812fe767cbd2e2b488ca8/server.js#L18-L23
