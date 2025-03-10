@@ -23,55 +23,57 @@
     </header>
     <main id="cam-grid" class="h-full grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-2 grid-rows-4 gap-2">
         <div id="cam-1" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-1">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-1">
+                <img src="/src/upload/cam-1.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 1</span>
         </div>
         <div id="cam-2" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-2">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-2">
+                <img src="/src/upload/cam-2.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 2</span>
         </div>
         <div id="cam-3" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-3">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-3">
+                <img src="/src/upload/cam-3.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 3</span>
         </div>
         <div id="cam-4" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-4">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-4">
+                <img src="/src/upload/cam-4.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 4</span>
         </div>
         <div id="cam-5" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-5">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-5">
+                <img src="/src/upload/cam-5.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 5</span>
         </div>
         <div id="cam-6" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-6">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-6">
+                <img src="/src/upload/cam-6.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 6</span>
         </div>
         <div id="cam-7" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-7">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-7">
+                <img src="/src/upload/cam-7.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 7</span>
         </div>
         <div id="cam-8" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="cam-8">
+            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-8">
+                <img src="/src/upload/cam-8.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
             </div>
             <span class="cam-title">Cam 8</span>
         </div>
     </main>
 </body>
+
+<script src="/scripts/media-upload.js"></script>
 
 <style>
     .cam-container {

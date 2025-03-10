@@ -8,6 +8,7 @@ const port = 4051;
 /* Websocket server */
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
+app.set('wss', wss);
 
 // bodyParser
 app.set('view engine', 'ejs');
