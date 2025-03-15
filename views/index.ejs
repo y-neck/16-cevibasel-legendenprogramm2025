@@ -8,7 +8,6 @@
     <meta name="author" content="(c) 2025 https://github.com/y-neck">
     <link rel="stylesheet" href="/output.css">
     <title>📼 PicassoControl</title>
-
 </head>
 <span class="sr-only">Hi, schön dass du hier bist! Diese Seite wurde mit viel ☕️ umgesetzt durch neckXproductions
     (©2025). Weitere Projekte findest du auf https://neckXproductions.ch.</span>
@@ -23,65 +22,32 @@
         </h2>
     </header>
     <main id="cam-grid" class="h-full grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-2 grid-rows-4 gap-2">
-        <div id="cam-1" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-1">
-                <img src="/src/upload/cam-1.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
+        <!-- @syntax:
+             <div id="cam-x" class="cam-container" onclick="window.location.href='/cam/' + this.id">
+                    <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-x">
+                        <img src="/src/upload/cam-x.jpg" class="cam-viewer-img"
+                            onerror="this.src='/upload/default.png';">
+                    </div>
+                    <span class="cam-title">
+                        < % =camNames['cam-x'] %>
+                    </span>
+                </div> -->
+        <% Object.keys(camNames).forEach((key, index)=> { %> <!-- For each camName in camNames.js -->
+            <div id="cam-<%= index + 1 %>" class="cam-container border-2 border-gray-600 rounded-lg text-white"
+                onclick="window.location.href='/cam/' + this.id">
+                <!-- +1: offset array index -->
+                <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-<%= index + 1 %>">
+                    <img src="/src/upload/cam-<%= index + 1 %>.jpg" class="cam-viewer-img"
+                        onerror="this.src='/upload/default.png';">
+                </div>
+                <span class="cam-title" data-cam-id="cam-<%= index + 1 %>">
+                    <%= camNames['cam-' + (index + 1)] %>
+                </span>
             </div>
-            <span class="cam-title">
-                <%= camNames['cam-1'] %>
-            </span>
-        </div>
-        <div id="cam-2" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-2">
-                <img src="/src/upload/cam-2.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title">Cam 2</span>
-        </div>
-        <div id="cam-3" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-3">
-                <img src="/src/upload/cam-3.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title" data-cam-id="cam-3">Cam 3</span>
-        </div>
-        <div id="cam-4" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-4">
-                <img src="/src/upload/cam-4.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title">Cam 4</span>
-        </div>
-        <div id="cam-5" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-5">
-                <img src="/src/upload/cam-5.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title" data-cam-id="cam-5">Cam 5</span>
-        </div>
-        <div id="cam-6" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-6">
-                <img src="/src/upload/cam-6.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title">Cam 6</span>
-        </div>
-        <div id="cam-7" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-7">
-                <img src="/src/upload/cam-7.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title" data-cam-id="cam-7">Cam 7</span>
-        </div>
-        <div id="cam-8" class="cam-container" onclick="window.location.href='/cam/' + this.id">
-            <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-8">
-                <img src="/src/upload/cam-8.jpg" class="cam-viewer-img" onerror="this.src='/upload/default.png';">
-            </div>
-            <span class="cam-title">Cam 8</span>
-        </div>
+            <% }) %>
     </main>
 </body>
 
 <script src="/scripts/media-upload.js"></script>
-
-<style>
-    .cam-container {
-        @apply border-2 border-gray-600 rounded-lg text-white;
-    }
-</style>
 
 </html>

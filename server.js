@@ -21,6 +21,9 @@ const { camNames } = require('./src/store/camNames.js');
 app.get('/', (req, res) => {  // set url
     res.render('index', { camNames })
 })
+app.get('/admin/backend', (req, res) => {  // set url
+    res.render('admin/backend', { camNames })
+})
 
 // Import routes
 const adminRouter = require('./routes/admin');
