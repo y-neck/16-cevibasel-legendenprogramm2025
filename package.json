@@ -13,6 +13,7 @@
   "author": "y-neck",
   "license": "MIT",
   "dependencies": {
+    "@readme/markdown": "^9.0.4",
     "@tailwindcss/cli": "^4.0.0",
     "ejs": "^3.1.10",
     "express": "^4.21.2",

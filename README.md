@@ -10,7 +10,8 @@ Developped by [neckXproductions/Yannick Spriessler (©2025)](https://neckxproduc
 8 "Camera" views (a.k.a. image/video tags) are predefined to display images. Each camera can be enlarged by clicking on it, which leads to a new page with the single image of the camera. This is done via a router for each camera, based on the camId:
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/a344f99f8fbd9ed03da8988c788a0c420142dc62/routes/cam.js#L14-L26
 
-The camera names can be globally changed in the `camNames.js` file:
+> ℹ️ The camera names can be globally changed in the `camNames.js` file:
+
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4180433ac475fa65b121dffa0806f394d669fb23/src/store/camNames.js#L5-L12
 
 These KV pairs are then passed to the index view via the `camNames` object:

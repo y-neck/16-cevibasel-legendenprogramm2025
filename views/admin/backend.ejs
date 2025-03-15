@@ -28,53 +28,27 @@
     <form id="media-grid"
         class="h-full grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-2 grid-rows-4 gap-2 m-5 text-white text-center"
         method="post" enctype="multipart/form-data">
-        <div class="cam-container">
-            <label for="cam-1">Cam 1</label>
-            <input type="file" name="cam-1" id="cam-1" accept="image/jpg, video/mp4" data-cam-id="cam-1">
-        </div>
-        <div class="cam-container">
-            <label for="cam-2">Cam 2</label>
-            <input type="file" name="cam-2" id="cam-2" accept="image/jpg, video/mp4" data-cam-id="cam-2">
-        </div>
-        <div class="cam-container">
-            <label for="cam-3">Cam 3</label>
-            <input type="file" name="cam-3" id="cam-3" accept="image/jpg, video/mp4" data-cam-id="cam-3">
-        </div>
-        <div class="cam-container">
-            <label for="cam-4">Cam 4</label>
-            <input type="file" name="cam-4" id="cam-4" accept="image/jpg, video/mp4" data-cam-id="cam-4">
-        </div>
-        <div class="cam-container">
-            <label for="cam-5">Cam 5</label>
-            <input type="file" name="cam-5" id="cam-5" accept="image/jpg, video/mp4" data-cam-id="cam-5">
-        </div>
-        <div class="cam-container">
-            <label for="cam-6">Cam 6</label>
-            <input type="file" name="cam-6" id="cam-6" accept="image/jpg, video/mp4" data-cam-id="cam-6">
-        </div>
-        <div class="cam-container">
-            <label for="cam-7">Cam 7</label>
-            <input type="file" name="cam-7" id="cam-7" accept="image/jpg, video/mp4" data-cam-id="cam-7">
-        </div>
-        <div class="cam-container">
-            <label for="cam-8">Cam 8</label>
-            <input type="file" name="cam-8" id="cam-8" accept="image/jpg, video/mp4" data-cam-id="cam-8">
-        </div>
-        <button type="submit"
-            class="self-center bg-gray-600 hover:bg-gray-800 text-white border-2-solid border-gray-600 rounded-lg">
-            Speichern
-        </button>
+        <!-- @syntax:
+            <div class="cam-container">
+                    <label for="cam-x">Cam x</label>
+                    <input type="file" name="cam-x" id="cam-x" accept="image/jpg, video/mp4" data-cam-id="cam-x">
+                </div> -->
+        <% Object.keys(camNames).forEach((key, index)=> { %> <!-- For each camName in camNames.js -->
+            <div
+                class="cam-container border-2 border-gray-600 rounded-lg text-white flex flex-col items-center justify-center gap-4 text-center box-border">
+                <label for="cam-<%= index + 1 %>"
+                    class="bg-gray-600 text-white border-2-solid border-gray-600 w-full">Cam <%= index + 1 %>
+                </label>
+                <input type="file" name="cam-<%= index + 1 %>" id="cam-<%= index + 1 %>" class="cursor-pointer"
+                    accept="image/jpg, video/mp4" data-cam-id="cam-<%= index + 1 %>">
+            </div>
+            <% }) %>
+
+                <button type="submit"
+                    class="self-center bg-gray-600 hover:bg-gray-800 text-white border-2-solid border-gray-600 rounded-lg">
+                    Speichern
+                </button>
     </form>
 </body>
-
-<style>
-    .cam-container {
-        @apply border-2 border-gray-600 rounded-lg text-white flex flex-col items-center justify-center gap-4 text-center box-border;
-    }
-
-    label {
-        @apply bg-gray-600 hover:bg-gray-900 text-white border-2-solid border-gray-600;
-    }
-</style>
 
 </html>
