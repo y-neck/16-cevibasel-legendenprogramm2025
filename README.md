@@ -27,3 +27,6 @@ After the image is uploaded, the backend broadcasts an update to all clients. Th
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4306d495467411382ea6426e2dc021f6821c0fd9/middleware/upload-router.js#L38-L72
 
 https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/4306d495467411382ea6426e2dc021f6821c0fd9/src/scripts/media-upload.js#L8-L18
+
+Additionally, the kv pairs are stored in the session storage. This is done to prevent the browser from reloading the default images when the page is refreshed.
+https://github.com/y-neck/16-cevibasel-legendenprogramm2025/blob/0042ca9dfd93a5a44ab3405f45da2fc47f0482e1/src/scripts/media-upload.js#L115-L131
