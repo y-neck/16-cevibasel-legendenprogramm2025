@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('src')); // serve static files from the src directory
 
 // Routes
-// Get camNames from store
+// Distribute camNames.js from store to frontend
 const { camNames } = require('./src/store/camNames.js');
 
 app.get('/', (req, res) => {  // set url

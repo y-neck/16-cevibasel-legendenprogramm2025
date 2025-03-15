@@ -50,4 +50,33 @@
 
 <script src="/scripts/media-upload.js"></script>
 
+<script>
+    const viewers = document.querySelectorAll('.cam-viewer');
+    const camStorage = JSON.parse(sessionStorage.getItem('camStorage'));
+    // If camStorage is not empty, update images
+    document.querySelectorAll('.cam-viewer').forEach(viewer => {
+        if (Object.keys(camStorage).length > 0) {
+            viewers.forEach(viewer => {
+                try {
+                    const camId = viewer.dataset.camId;
+                    if (camStorage[camId]) {
+                        // Construct the new src attribute for the image
+                        const newSrc = camStorage[camId];
+                        // Update the img element's src attribute
+                        const img = viewer.querySelector('img');
+                        img.src = newSrc;
+
+                        // DEBUG:
+                        console.log('Viewer element data-camId:', camId);
+                        console.log('Media src updated to:', newSrc);
+                    }
+                }
+                catch (error) {
+                    console.error('Error parsing JSON in index.ejs:', error);
+                }
+            });
+        }
+    })
+</script>
+
 </html>
