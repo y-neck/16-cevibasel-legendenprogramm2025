@@ -25,19 +25,39 @@
         <a href="/" class="text-white m-5 p-2 bg-gray-600 rounded-lg text-center text-lg w-fit">← Zurück zur
             Übersicht</a>
         <div class="cam-container">
-            <div class="cam-viewer w-1/2 max-h-[900px]" alt="Kamerabild">
-                <img src="/upload/default.png" data-cam-id="<%= camId %>">
+            <div class="cam-viewer w-1/2 max-h-[900px] border-2 border-gray-600 rounded-lg text-white" alt="Kamerabild"
+                data-cam-id="<%= camId %>">
+                <img src="/upload/default.png">
             </div>
         </div>
     </main>
 
 </body>
 
-<style>
-    .cam-container {
-        @apply border-2 border-gray-600 rounded-lg text-white;
-    }
+<script src="/scripts/media-upload.js"></script>
 
+<script>
+    const viewer = document.querySelector('.cam-viewer');
+    const camStorage = JSON.parse(sessionStorage.getItem('camStorage') || '{}');
+    if (viewer && Object.keys(camStorage).length > 0) {
+        try {
+            const camId = viewer.dataset.camId;
+            if (camStorage[camId]) {
+                const newSrc = camStorage[camId];
+                const img = viewer.querySelector('img');
+                if (img) {
+                    img.src = newSrc;
+                    console.log('Viewer element data-camId:', camId);
+                    console.log('Media src updated to:', newSrc);
+                }
+            }
+        } catch (error) {
+            console.error('Error parsing JSON in cam.ejs:', error);
+        }
+    }
+</script>
+
+<style>
     .cam-viewer,
     .cam-viewer img,
     video {
