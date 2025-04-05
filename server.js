@@ -14,7 +14,7 @@ app.set('wss', wss);
 app.set('view engine', 'ejs');
 app.use(express.static('src')); // serve static files from the src directory
 
-// Routes
+/* Routes */
 // Distribute camNames.js from store to frontend
 const { camNames } = require('./src/store/camNames.js');
 

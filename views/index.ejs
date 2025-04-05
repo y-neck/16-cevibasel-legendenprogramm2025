@@ -12,6 +12,8 @@
 <span class="sr-only">Hi, schön dass du hier bist! Diese Seite wurde mit viel ☕️ umgesetzt durch neckXproductions
     (©2025). Weitere Projekte findest du auf https://neckXproductions.ch.</span>
 
+<script src="/src/scripts/media-upload.js"></script>
+
 <body class="bg-gray-900 min-h-screen">
     <header class="bg-gray-600 p-5 flex flex-col items-center h-fit w-full">
         <div id="logo" class="self-start">
@@ -37,8 +39,24 @@
                 onclick="window.location.href='/cam/' + this.id">
                 <!-- +1: offset array index -->
                 <div class="cam-viewer" alt="Kamerabild" class="cam-viewer" data-cam-id="cam-<%= index + 1 %>">
-                    <img src="/src/upload/cam-<%= index + 1 %>.jpg" class="cam-viewer-img"
-                        onerror="this.src='/upload/default.png';">
+                    <% const mediaFile=`/src/upload/cam-${index + 1}`; /* Get media file path */ const
+                        getFileExtension=(filePath)=> filePath.split('.').pop(); /* Split file path and get file
+                        extension */
+                        const fileExtension = getFileExtension(mediaFile); /* Get file extension */
+                        const isImageFile = fileExtension === 'jpg'; /* Check if file extension is an image */
+                        const isVideoFile = fileExtension === 'mp4'; /* Check if file extension is a video */
+                        %>
+                        <% if (isImageFile) { %>
+                            <!-- If media file is an image -->
+                            <img src="<%= mediaFile %>.jpg" alt="Kamerabild" class="cam-viewer-img"
+                                onerror="this.src='/upload/default.png';">
+                            <% } else if (isVideoFile) { %>
+                                <!-- If media file is a video -->
+                                <video src="<%= mediaFile %>.mp4" alt="Kamerabild" class="cam-viewer-img" autoplay
+                                    controls="false"></video>
+                                <% } else { %>
+                                    <img src="/upload/default.png" class="cam-viewer-img">
+                                    <% } %>
                 </div>
                 <span class="cam-title" data-cam-id="cam-<%= index + 1 %>">
                     <%= camNames['cam-' + (index + 1)] %>
