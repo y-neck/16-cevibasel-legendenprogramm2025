@@ -35,15 +35,15 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Function to handle file upload via ws
-function broadcastUpdate(wss, camId) {
+function broadcastUpdate(wss, camId, fileType) {
     if (!wss) {
         console.error('No websocket server found');
         return;
     };
 
-    const message = JSON.stringify({ action: "update", camId });
+    const message = JSON.stringify({ action: "update", camId, fileType });
     // DEBUG:
-    console.log('Broadcasting update for camId:', camId);
+    console.log('Broadcasting update for camId:', camId, fileType);
 
     wss.clients.forEach(client => {
         if (client.readyState === client.OPEN) {
@@ -64,8 +64,10 @@ router.post('/', upload.any(), (req, res) => {
     req.files.forEach(file => {
         // Get camId from file input
         const camId = file.fieldname;
+        // Get file type from file input
+        const fileType = file.mimetype;
         // Broadcast update to all clients
-        broadcastUpdate(wss, file.fieldname);
+        broadcastUpdate(wss, camId, fileType);
     });
 
     res.status(200).send('Files uploaded successfully');
