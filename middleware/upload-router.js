@@ -21,12 +21,21 @@ const storage = multer.diskStorage({
         const camId = file.fieldname
         const ext = path.extname(file.originalname) // Get file extension
         const newFilename = `${camId}${ext}`; // Return filename consisting of camId and extension
-
-        // Delete old file via overwrite if it exists 
         const filePath = path.join(uploadDir, newFilename);
-        if (fs.existsSync(filePath)) {
-            fs.unlinkSync(filePath);
-        }
+
+        // Delete old file via overwrite if it exists
+        const allowedExtensions = ['jpg', 'jpeg', 'mp4'];
+        allowedExtensions.forEach(OldExt => {
+            const oldPath = path.join(uploadDir, `${camId}.${OldExt}`);
+            if (fs.existsSync(oldPath)) {
+                try {
+                    fs.unlinkSync(oldPath);
+                }
+                catch (error) {
+                    console.error('Error deleting old file:', error);
+                }
+            }
+        });
         cb(null, newFilename);  // Return new filename
     }
 });
