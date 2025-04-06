@@ -37,24 +37,65 @@
 <script src="/scripts/media-upload.js"></script>
 
 <script>
-    const viewer = document.querySelector('.cam-viewer');
-    const camStorage = JSON.parse(sessionStorage.getItem('camStorage') || '{}');
-    if (viewer && Object.keys(camStorage).length > 0) {
-        try {
-            const camId = viewer.dataset.camId;
-            if (camStorage[camId]) {
-                const newSrc = camStorage[camId];
-                const img = viewer.querySelector('img');
-                if (img) {
-                    img.src = newSrc;
-                    console.log('Viewer element data-camId:', camId);
-                    console.log('Media src updated to:', newSrc);
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load camStorage from sessionStorage
+        const camStorage = JSON.parse(sessionStorage.getItem('camStorage') || '{}');
+        // Update images
+        if (Object.keys(camStorage).length > 0) {
+            document.querySelectorAll('.cam-viewer').forEach(viewer => {
+                const camId = viewer.dataset.camId;
+                if (camStorage[camId]) {
+                    const newSrc = camStorage[camId];
+                    // Infer extension from newSrc
+                    const extension = newSrc.split('.').pop().toLowerCase();
+                    const isVideo = (extension === 'mp4');
+
+                    // Find the current media element (img or video)
+                    let mediaElement = viewer.querySelector('img') || viewer.querySelector('video');
+                    if (!mediaElement) {
+                        console.error('No media element found for camId:', camId);
+                        return;
+                    }
+
+                    // If the stored file is a video but current element is not a video, replace it
+                    if (isVideo && mediaElement.tagName.toLowerCase() !== 'video') {
+                        mediaElement.remove();
+                        const videoElem = document.createElement('video');
+                        videoElem.src = newSrc;
+                        videoElem.classList.add('cam-viewer-img');
+                        // Video playback handling
+                        videoElem.autoplay = true;                 // JS property
+                        videoElem.muted = true;                   // JS property
+                        videoElem.playsInline = true;             // JS property
+                        videoElem.setAttribute('autoplay', '');   // HTML attribute
+                        videoElem.setAttribute('muted', '');      // HTML attribute
+                        videoElem.setAttribute('playsinline', ''); // HTML attribute
+                        viewer.appendChild(videoElem);
+                        console.log(`Replaced image with video for ${camId}: ${newSrc}`);
+                    }
+                    // If new type is image but current element is not an image, replace it
+                    else if (!isVideo && mediaElement.tagName.toLowerCase() !== 'img') {
+                        mediaElement.remove();
+                        const imgElem = document.createElement('img');
+                        imgElem.src = newSrc;
+                        imgElem.classList.add('cam-viewer-img');
+                        imgElem.alt = 'Kamerabild';
+                        imgElem.onerror = () => { imgElem.src = '/upload/default.png'; };
+                        viewer.appendChild(imgElem);
+                        console.log(`Replaced video with image for ${camId}: ${newSrc}`);
+                    }
+                    else {
+                        // If element type is correct, simply update the src if needed
+                        if (mediaElement.src !== newSrc) {
+                            mediaElement.src = newSrc;
+                            console.log(`Media src updated for ${camId}: ${newSrc}`);
+                        }
+                    }
+
                 }
-            }
-        } catch (error) {
-            console.error('Error parsing JSON in cam.ejs:', error);
+            })
         }
-    }
+    });
 </script>
 
 <style>
