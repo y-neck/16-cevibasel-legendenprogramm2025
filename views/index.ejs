@@ -80,9 +80,13 @@
                         const videoElem = document.createElement('video');
                         videoElem.src = newSrc;
                         videoElem.classList.add('cam-viewer-img');
-                        videoElem.autoplay = true;
-                        videoElem.muted = true;
-                        videoElem.playsInline = true;
+                        // Video playback handling
+                        videoElem.autoplay = true;                 // JS property
+                        videoElem.muted = true;                   // JS property
+                        videoElem.playsInline = true;             // JS property
+                        videoElem.setAttribute('autoplay', '');   // HTML attribute
+                        videoElem.setAttribute('muted', '');      // HTML attribute
+                        videoElem.setAttribute('playsinline', ''); // HTML attribute
                         viewer.appendChild(videoElem);
                         console.log(`Replaced image with video for ${camId}: ${newSrc}`);
                     }
