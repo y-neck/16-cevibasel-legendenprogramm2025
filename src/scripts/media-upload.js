@@ -94,8 +94,8 @@ function getExtension(fileType) {
 /**
  * Refreshes the images in the given cam's viewer.
  * If camId is not provided, it refreshes all images.
- * @param {string} [camId] The id of the camera to refresh
- * @param {string} [fileType] The type of the file to refresh
+ * @param {string} camId The id of the camera to refresh
+ * @param {string} fileType The mime type of the file to refresh
 */
 function refreshImages(camId, fileType) {
     // Get file extension
@@ -125,28 +125,53 @@ function refreshImages(camId, fileType) {
                     return
                 };
 
-                // Update the img element's src attribute if changed
-                if (mediaElement.src !== newSrc) {
-                    mediaElement.src = newSrc;
-                    // DEBUG:
-                    console.log('Media src updated to:', newSrc);
-
-                    // Store in / update session storage
-                    camStorage[camId] = newSrc;
-                    // DEBUG:
-                    console.log('Local storage updated for camId:', camId, mediaElement.src);
-                } else if (!viewer.dataset.camId) {
-                    console.log('Viewer element has no camId:', viewer);
-                } else {
-                    console.log("Error", viewer);
-                    return;
+                const isVideo = extension === 'mp4';
+                // If the new type is video but current element is not a video, replace it
+                if (isVideo && mediaElement.tagName.toLowerCase() !== 'video') {
+                    mediaElement.remove();
+                    const videoElem = document.createElement('video');
+                    videoElem.src = newSrc;
+                    videoElem.classList.add('cam-viewer-img');
+                    videoElem.autoplay = true;
+                    videoElem.muted = true;
+                    videoElem.playsInline = true;
+                    viewer.appendChild(videoElem);
+                    console.log(`Replaced image with video for ${camId}: ${newSrc}`);
                 }
-            }
-        } catch (error) {
-            console.error('Error refreshing media:', error);
-        }
-    });
+                // If new type is image but current element is not an image, replace it
+                else if (!isVideo && mediaElement.tagName.toLowerCase() !== 'img') {
+                    mediaElement.remove();
+                    const imgElem = document.createElement('img');
+                    imgElem.src = newSrc;
+                    imgElem.classList.add('cam-viewer-img');
+                    imgElem.alt = 'Kamerabild';
+                    imgElem.onerror = () => { imgElem.src = '/upload/default.png'; };
+                    viewer.appendChild(imgElem);
+                    console.log(`Replaced video with image for ${camId}: ${newSrc}`);
+                }
+                else {
+                    // If element type is correct, simply update the src if needed
+                    if (mediaElement.src !== newSrc) {
+                        mediaElement.src = newSrc;
+                        console.log(`Media src updated for ${camId}: ${newSrc}`);
+                    }
+                }
 
+                // Store in / update session storage
+                camStorage[camId] = newSrc;
+                // DEBUG:
+                console.log('Local storage updated for camId:', camId, mediaElement.src);
+            } else if (!viewer.dataset.camId) {
+                console.log('Viewer element has no camId:', viewer);
+            } else {
+                console.log("Error", viewer);
+                return;
+            }
+        }
+        catch (error) {
+            console.error('Error refreshing media:', error);
+        };
+    });
     // Save to session storage
     sessionStorage.setItem('camStorage', JSON.stringify(camStorage));
     // DEBUG:    

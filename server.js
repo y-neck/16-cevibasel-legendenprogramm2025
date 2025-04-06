@@ -15,12 +15,42 @@ app.set('view engine', 'ejs');
 app.use(express.static('src')); // serve static files from the src directory
 
 /* Routes */
-// Distribute camNames.js from store to frontend
-const { camNames } = require('./src/store/camNames.js');
+// Distribute camNames.js and file paths from store to frontend
+const { camNames } = require('./src/store/camNames.js'); // camNames.js
+const fs = require('fs'); // file paths
+const path = require('path');
 
-app.get('/', (req, res) => {  // set url
-    res.render('index', { camNames })
+// Index routing
+app.get('/', (req, res) => {
+    const uploadDir = path.join(__dirname, '../src/upload');
+    // Build camera object
+    const camMediaTypes = {};
+    // Iterate over each camName in camNames.js and check if each cam's corresponding file exists in the upload directory
+    Object.keys(camNames).forEach((key, index) => {
+        const camId = `cam-${index + 1}`;
+        // List of allowed file extensions
+        const allowedExtensions = ['jpg', 'jpeg', 'mp4'];
+        // Initialize to null, will be set to the found extension
+        let foundExt = null;
+
+        // Iterate over each allowed extension
+        for (const ext of allowedExtensions) {
+            // Construct the full path of the file
+            const filePath = path.join(uploadDir, `${camId}.${ext}`);
+            // Check if the file exists
+            if (fs.existsSync(filePath)) {
+                // If it exists, set foundExt to the current extension
+                foundExt = ext;
+                break;
+            }
+        }
+        camMediaTypes[camId] = foundExt;    // Set camMediaTypes[camId] to the found extension; can be null if no file was found
+    })
+    // set url
+    res.render('index', { camNames, camMediaTypes, renderMediaTag });
 })
+
+// Backend routing
 app.get('/admin/backend', (req, res) => {  // set url
     res.render('admin/backend', { camNames })
 })
@@ -29,6 +59,7 @@ app.get('/admin/backend', (req, res) => {  // set url
 const adminRouter = require('./routes/admin');
 const camRouter = require('./routes/cam');
 const uploadRouter = require('./middleware/upload-router');
+const { renderMediaTag } = require('./src/scripts/renderMediaTag.js');
 
 // Attach routers
 app.use('/admin', adminRouter);
